@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="UserInfo">
+	<resultMap type="User" id="User">
+		<result column="id" property="id" />
+		
+		<result column="name" property="name" />
+		<result column="gender" property="gender" />
+		<result column="email" property="email" />
+		<collection property="cls" column="clsId" select="ClassesInfo.ById" />
+	</resultMap>
+	
+	
+	<select id="all" resultMap="User" parameterType="map">
+		<![CDATA[
+			select * from (select u.*, u.id as r from users u,classes c where u.clsid = c.id) as L where L.r <= #{num1} and L.r > #{num2}
+		]]>
+	</select>
+	<select id="count" resultType="int">
+		
+			select count(*) from users
+		
+	</select>
+	
+	<delete id="delete" parameterType="int" >
+		
+			delete from users where id=#{id}
+			
+		
+	</delete>
+	
+	
+	<insert id="insert" parameterType="User" >
+			insert into users (id, name,gender,email,clsid) values (#{id}, #{name}, #{gender}, #{email}, #{cls.id})
+	</insert>
+	
+	
+	<update id="update" parameterType="User" >
+			update users set name=#{name}, gender=#{gender}, email=#{email}, clsid=#{cls.id} where id=#{id}
+	</update>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+
+</mapper>

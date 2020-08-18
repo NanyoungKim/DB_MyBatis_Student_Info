@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="ClassesInfo">
+	<resultMap type="Classes" id="Classes">
+		<result column="id" property="id" />
+		<result column="name" property="name" />
+	</resultMap>
+	<select id="all" resultMap="Classes">
+		<![CDATA[
+			select * from classes
+		]]>
+	</select>
+	<select id="ById" resultMap="Classes" parameterType="map">
+		<![CDATA[
+			select * from classes where id = #{id}
+		]]>
+	</select>
+</mapper>
