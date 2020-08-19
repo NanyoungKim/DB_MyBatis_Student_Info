@@ -51,8 +51,7 @@ public class UserServlet extends HttpServlet {
 		if (stop != null) {
 			List<Classes> list = cd.all();
 			request.setAttribute("clsList", list);
-			request.getRequestDispatcher("insert.jsp").forward(request,
-					response);
+			request.getRequestDispatcher("insert.jsp").forward(request,response);
 		} else {
 			String name = request.getParameter("name");
 			String sex = request.getParameter("sex");
@@ -65,11 +64,9 @@ public class UserServlet extends HttpServlet {
 			u.getCls().setId(clsId);
 			int num = ud.add(u);
 			if (num != 0) {
-				out
-						.print("<script type='text/javascript'>alert('±£´æ³É¹¦!');location.href='loading.jsp';</script>");
+				out.print("<script type='text/javascript'>alert('ä¿å­˜æˆåŠŸ!');location.href='loading.jsp';</script>");
 			} else {
-				out
-						.print("<script type='text/javascript'>alert('±£´æÊ§°Ü!');location.href='loading.jsp';</script>");
+				out.print("<script type='text/javascript'>alert('ä¿å­˜å¤±è´¥!');location.href='loading.jsp';</script>");
 			}
 		}
 	}
@@ -84,9 +81,9 @@ public class UserServlet extends HttpServlet {
 			List<Classes> list = cd.all();
 			request.setAttribute("u", u);
 			request.setAttribute("clsList", list);
-			request.getRequestDispatcher("update.jsp").forward(request,
-					response);
-		} else {
+			request.getRequestDispatcher("update.jsp").forward(request,response);
+		}
+		else {
 			int id = Integer.parseInt(request.getParameter("id"));
 			String name = request.getParameter("name");
 			String sex = request.getParameter("sex");
@@ -100,11 +97,9 @@ public class UserServlet extends HttpServlet {
 			u.getCls().setId(clsId);
 			int num = ud.upd(u);
 			if (num != 0) {
-				out
-						.print("<script type='text/javascript'>alert('ĞŞ¸Ä³É¹¦!');location.href='loading.jsp';</script>");
+				out.print("<script type='text/javascript'>alert('ä¿®æ”¹æˆåŠŸ!');location.href='loading.jsp';</script>");
 			} else {
-				out
-						.print("<script type='text/javascript'>alert('ĞŞ¸ÄÊ§°Ü!');location.href='loading.jsp';</script>");
+				out.print("<script type='text/javascript'>alert('ä¿®æ”¹å¤±è´¥!');location.href='loading.jsp';</script>");
 			}
 		}
 	}
@@ -115,11 +110,9 @@ public class UserServlet extends HttpServlet {
 		int id = Integer.parseInt(request.getParameter("id"));
 		int num = ud.del(id);
 		if (num != 0) {
-			out
-					.print("<script type='text/javascript'>alert('É¾³ı³É¹¦!');location.href='loading.jsp';</script>");
+			out.print("<script type='text/javascript'>alert('åˆ é™¤æˆåŠŸ!');location.href='loading.jsp';</script>");
 		} else {
-			out
-					.print("<script type='text/javascript'>alert('É¾³ıÊ§°Ü!');location.href='loading.jsp';</script>");
+			out.print("<script type='text/javascript'>alert('åˆ é™¤å¤±è´¥!');location.href='loading.jsp';</script>");
 		}
 	}
 
@@ -135,8 +128,7 @@ public class UserServlet extends HttpServlet {
 		ud.selectAll(page);
 		request.setAttribute("page", page);
 		request.setAttribute("index", page.getIndex());
-		request.setAttribute("sum", page.pageCount(page.getCount(), page
-				.getSize()));
+		request.setAttribute("sum", page.pageCount(page.getCount(), page.getSize()));
 		request.getRequestDispatcher("index.jsp").forward(request, response);
 	}
 }
